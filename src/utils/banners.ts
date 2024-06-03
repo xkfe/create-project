@@ -1,9 +1,8 @@
 import process from 'node:process'
 import { bold, lightCyan } from 'kolorist'
 
-/* eslint-disable no-console */
 export function printBanner() {
-  const text = 'Uni-creator - 快速创建 uni-app 项目'
+  const text = 'create-xkfe-project - 帮你轻松创建前端各种项目的快速开发模板'
   let colorText = ''
 
   const startColor = { r: 0x3B, g: 0xD1, b: 0x91 }

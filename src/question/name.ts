@@ -7,7 +7,7 @@ export default (): PromptObject<string>[] => {
       name: 'projectName',
       type: 'text',
       message: '请输入项目名称:',
-      initial: 'uni-app',
+      initial: 'my-project',
     },
     ...filePrompt(),
   ]
