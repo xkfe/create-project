@@ -1,34 +1,36 @@
 {
-  "name": "create-uni",
+  "name": "create-xkfe-project",
   "type": "module",
-  "version": "1.4.0",
-  "packageManager": "pnpm@8.6.12",
-  "description": "轻松创建你的 uni-app 项目",
-  "author": "FliPPeDround <flippedround@qq.com>",
+  "version": "0.0.1",
+  "packageManager": "pnpm@9.1.4",
+  "description": "轻松创建前端各种项目快速开发模板的 cli 工具,包含后台、官网、小程序、H5等,提高效率，避免重复搭建！",
+  "author": "xkfe <xkfe0516@gmail.com> (https://github.com/xkfe)",
   "license": "MIT",
-  "funding": "https://afdian.net/a/flippedround",
-  "homepage": "https://github.com/uni-helper/create-uni#readme",
+  "homepage": "https://github.com/xkfe/create-project",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uni-helper/create-uni.git"
+    "url": "git+https://github.com/xkfe/create-project"
   },
-  "bugs": "https://github.com/uni-helper/create-uni/issues",
+  "bugs": {
+    "url": "https://github.com/xkfe/create-project/issues"
+  },
   "keywords": [
-    "uni",
-    "uni-app",
-    "create-uni",
-    "cli",
+    "template",
+    "create-project",
+    "starter",
     "vue",
-    "miniapp",
-    "create"
+    "react",
+    "uni-app",
+    "taro"
   ],
   "sideEffects": false,
+  "main": "dist/outfile.cjs",
   "bin": {
-    "create-uni": "dist/outfile.cjs"
+    "create-xkfe-project": "dist/outfile.cjs"
   },
   "files": [
     "dist/outfile.cjs",
-    "template"
+    "template-*"
   ],
   "scripts": {
     "build": "tsup",
@@ -38,7 +40,10 @@
     "prepublishOnly": "nr build",
     "release": "bumpp",
     "typecheck": "tsc --noEmit",
-    "up": "cd ./template && pnpx taze@latest major -w -r && cd ./base && pnpx @dcloudio/uvm@latest --manager pnpm"
+    "up": "cd ./template && pnpx taze@latest major -w -r && cd ./base && pnpx @dcloudio/uvm@latest --manager pnpm",
+    "commit": "git-cz",
+    "cz": "git-cz",
+    "postinstall": "pnpm simple-git-hooks"
   },
   "dependencies": {
     "ejs": "^3.1.9",
@@ -51,6 +56,7 @@
     "prompts": "^2.4.2"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.19.1",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.7",
     "@types/ejs": "^3.1.5",
@@ -58,8 +64,9 @@
     "@types/minimist": "^1.2.5",
     "@types/node": "^18.19.11",
     "@types/prompts": "^2.4.9",
-    "@uni-helper/eslint-config": "^0.0.5",
     "bumpp": "^9.3.0",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.9.2",
     "eslint": "^8.56.0",
     "lint-staged": "^15.2.1",
     "simple-git-hooks": "^2.9.0",
@@ -68,9 +75,15 @@
     "typescript": "^5.3.3"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "node scripts/verify-commit.js"
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   }
 }

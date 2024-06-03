@@ -1,7 +1,14 @@
-import uni from '@uni-helper/eslint-config'
+import antfu from '@antfu/eslint-config'
 
-export default uni({
-  rules: {
-    'no-console': 'warn',
+export default antfu(
+  {
+    ignores: [],
   },
-})
+  {
+    rules: {
+      'no-console': 'warn',
+      'no-new': 'off',
+      'curly': 'off',
+    },
+  },
+)
