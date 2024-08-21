@@ -5,15 +5,21 @@
   "description": "✨开箱即用的前端各种项目快速开发模板,包含后台、官网、小程序、H5、可视化大屏等,提高效率,避免从0 创建项目！",
   "author": "xkfe<xkfe16@gmail.com>",
   "keywords": [],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "commit": "git-cz",
-    "cz": "git-cz"
+    "cz": "git-cz",
+    "release": "bumpp --commit --push --tag"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.26.0",
+    "@changesets/cli": "^2.27.7",
     "@types/node": "^22.4.2",
+    "bumpp": "^9.5.1",
     "commitizen": "^4.3.0",
     "cz-git": "^1.9.4",
     "eslint": "^9.9.0",
