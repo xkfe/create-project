@@ -1,0 +1,37 @@
+{
+  "name": "project-templates",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "✨开箱即用的前端各种项目快速开发模板,包含后台、官网、小程序、H5、可视化大屏等,提高效率,避免从0 创建项目！",
+  "author": "xkfe<xkfe16@gmail.com>",
+  "keywords": [],
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "commit": "git-cz",
+    "cz": "git-cz"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.26.0",
+    "@types/node": "^22.4.2",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.9.4",
+    "eslint": "^9.9.0",
+    "eslint-plugin-format": "^0.1.2",
+    "lint-staged": "^15.2.9",
+    "simple-git-hooks": "^2.11.1",
+    "tsx": "^4.17.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "tsx scripts/verify-commit.js"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  }
+}
