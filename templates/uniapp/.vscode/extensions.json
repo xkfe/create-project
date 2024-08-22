@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "vue.volar",
+    "uni-helper.uni-app-schemas-vscode",
+    "uni-helper.uni-highlight-vscode",
+    "uni-helper.uni-app-snippets-vscode",
+    "yoavbls.pretty-ts-errors",
+    "dbaeumer.vscode-eslint",
+    "antfu.unocss"
+  ]
+}
