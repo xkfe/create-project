@@ -11,7 +11,6 @@
       "@dcloudio/types",
       "miniprogram-api-typings",
       "mini-types",
-      "@uni-helper/uni-cloud-types",
       "wot-design-uni/global.d.ts",
       "@uni-helper/uni-app-types"
     ],

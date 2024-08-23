@@ -3,6 +3,7 @@ import 'core-js/actual/array/iterator'
 import 'core-js/actual/promise'
 import 'core-js/actual/object/assign'
 import 'core-js/actual/promise/finally'
+import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only'
 
 import '@unocss/reset/tailwind.css'
 import 'uno.css'

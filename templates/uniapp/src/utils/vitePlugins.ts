@@ -47,7 +47,7 @@ export function vitePlugins(): (PluginOption | PluginOption[])[] {
     AutoImport({
       imports: ['vue', 'uni-app', 'pinia'],
       dirs: [
-        'src/stores/*',
+        'src/stores/modules/*',
         'src/components/*',
         'src/hooks/*',
       ],

@@ -5,7 +5,8 @@ export default uniHelper({
   unocss: true,
   // Ignored rule
   rules: {
-
+    'no-console': 'off',
+    'ts/no-unused-expressions': 'off',
   },
 }, {
   // Ignore files

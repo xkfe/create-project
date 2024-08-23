@@ -1,8 +1,20 @@
 <script setup lang="ts">
 import { useNotify, useToast } from 'wot-design-uni'
+import { getExampleApi } from '@/api/modules/example'
 
 const toast = useToast()
 const { showNotify } = useNotify()
+
+onMounted(() => {
+  // cancel request
+  getExampleApi().then((res) => {
+    console.log(res)
+  })
+
+  setTimeout(() => {
+    getExampleApi()
+  }, 0)
+})
 </script>
 
 <route type="home" lang="yaml">
