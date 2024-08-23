@@ -8,12 +8,16 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./../src/components/AppFooter.vue')['default']
-    AppLogos: typeof import('./src/components/AppLogos.vue')['default']
-    InputEntry: typeof import('./src/components/InputEntry.vue')['default']
     WdButton: typeof import('wot-design-uni/components/wd-button/wd-button.vue')['default']
+    WdConfigProvider: typeof import('wot-design-uni/components/wd-config-provider/wd-config-provider.vue')['default']
     WdIcon: typeof import('wot-design-uni/components/wd-icon/wd-icon.vue')['default']
+    WdInput: typeof import('wot-design-uni/components/wd-input/wd-input.vue')['default']
+    WdLoading: typeof import('wot-design-uni/components/wd-loading/wd-loading.vue')['default']
+    WdMessageBox: typeof import('wot-design-uni/components/wd-message-box/wd-message-box.vue')['default']
+    WdNotify: typeof import('wot-design-uni/components/wd-notify/wd-notify.vue')['default']
     WdOverlay: typeof import('wot-design-uni/components/wd-overlay/wd-overlay.vue')['default']
     WdPopup: typeof import('wot-design-uni/components/wd-popup/wd-popup.vue')['default']
+    WdToast: typeof import('wot-design-uni/components/wd-toast/wd-toast.vue')['default']
     WdTransition: typeof import('wot-design-uni/components/wd-transition/wd-transition.vue')['default']
   }
 }
