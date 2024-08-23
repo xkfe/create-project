@@ -48,7 +48,6 @@
     },
     "usingComponents": true,
     "lazyCodeLoading": "requiredComponents",
-    "darkmode": true,
     "optimization": {
       "subPackages": true
     }
@@ -65,8 +64,5 @@
   "uniStatistics": {
     "enable": false
   },
-  "vueVersion": "3",
-  "h5": {
-    "darkmode": true
-  }
+  "vueVersion": "3"
 }

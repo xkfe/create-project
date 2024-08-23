@@ -8,8 +8,9 @@
 import type { PluginOption } from 'vite'
 import Uni from '@dcloudio/vite-plugin-uni'
 import AutoImport from 'unplugin-auto-import/vite'
+import UniHelperLayouts from '@uni-helper/vite-plugin-uni-layouts'
 import UniHelperManifest from '@uni-helper/vite-plugin-uni-manifest'
-import UniPages from '@uni-helper/vite-plugin-uni-pages'
+import UniHelperPages from '@uni-helper/vite-plugin-uni-pages'
 import UniHelperComponents from '@uni-helper/vite-plugin-uni-components'
 import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
 
@@ -20,11 +21,14 @@ import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
  */
 export function vitePlugins(): (PluginOption | PluginOption[])[] {
   return [
+    // 为 uni-app 提供类 nuxt 的 layouts 系统
+    UniHelperLayouts(),
+
     // 为 manifest.json 提供ts类型支持
     UniHelperManifest(),
 
     // 基于文件的路由插件(docs: https://uni-helper.js.org/vite-plugin-uni-pages)
-    UniPages({
+    UniHelperPages({
       dts: './typings/uni-pages.d.ts',
       homePage: 'pages/index', /** @default 'pages/index' or 'pages/index/index' */
       subPackages: [],

@@ -10,6 +10,7 @@ const themeVars: ConfigProviderThemeVars = {
   <wd-config-provider :theme-vars="themeVars">
     <slot />
     <wd-toast />
+    <wd-notify />
     <wd-message-box />
   </wd-config-provider>
 </template>

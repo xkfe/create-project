@@ -5,15 +5,21 @@ const toast = useToast()
 const { showNotify } = useNotify()
 </script>
 
+<route type="home" lang="yaml">
+layout: default
+style:
+  navigationBarTitleText: "首页"
+</route>
+
 <template>
-  <view px-10 py-20 text-center>
-    123
-  </view>
   <view
     bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
-    text="sm teal"
+    text="20 teal"
     center
   >
+    123
+  </view>
+  <view flex flex-col gap-10 px-10 py-20 text-center>
     <wd-button @click="toast.success('操作成功')">
       toast
     </wd-button>

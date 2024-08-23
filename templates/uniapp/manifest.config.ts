@@ -62,7 +62,6 @@ export default defineManifestConfig({
     },
     lazyCodeLoading: 'requiredComponents',
     usingComponents: true,
-    darkmode: true,
     optimization: {
       subPackages: true,
     },
@@ -75,9 +74,6 @@ export default defineManifestConfig({
   },
   'mp-toutiao': {
     usingComponents: true,
-  },
-  'h5': {
-    darkmode: true,
   },
   'uniStatistics': {
     enable: false,
