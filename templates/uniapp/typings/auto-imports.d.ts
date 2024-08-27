@@ -89,6 +89,7 @@ declare global {
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useHandleData: typeof import('../src/hooks/useHandleData')['useHandleData']
   const useSlots: typeof import('vue')['useSlots']
   const useUserStore: typeof import('../src/stores/modules/users/index')['useUserStore']
   const watch: typeof import('vue')['watch']

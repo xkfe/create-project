@@ -51,6 +51,11 @@ export default defineManifestConfig({
       /* SDK配置 */
       sdkConfigs: {},
     },
+    safearea: {
+      bottom: {
+        offset: 'none',
+      },
+    },
   },
   /* 快应用特有相关 */
   'quickapp': {},
@@ -77,6 +82,13 @@ export default defineManifestConfig({
   },
   'uniStatistics': {
     enable: false,
+  },
+  'h5': {
+    safearea: {
+      bottom: {
+        offset: 'none',
+      },
+    },
   },
   'vueVersion': '3',
 })

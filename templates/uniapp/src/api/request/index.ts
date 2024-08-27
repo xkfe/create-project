@@ -15,7 +15,8 @@ import { RequestCanceler } from './cancel'
 import { TOKENNAME } from '@/config'
 
 const PLATFORM = uni.getSystemInfoSync().uniPlatform
-console.log('PLATFORM :>> ', PLATFORM)
+console.groupCollapsed('uniSystemInfo :>> ', uni.getSystemInfoSync())
+console.groupEnd()
 
 export interface RequestConfig extends UnConfig {
   loading?: boolean
