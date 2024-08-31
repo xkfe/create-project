@@ -1,0 +1,25 @@
+{
+  "name": "vue-data-visual",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@unocss/reset": "^0.62.2",
+    "v-scale-screen": "^2.2.0",
+    "vue": "^3.4.37"
+  },
+  "devDependencies": {
+    "@iconify/utils": "^2.1.32",
+    "@vitejs/plugin-vue": "^5.1.2",
+    "typescript": "^5.5.3",
+    "unocss": "^0.62.2",
+    "unplugin-auto-import": "^0.18.2",
+    "vite": "^5.4.1",
+    "vue-tsc": "^2.0.29"
+  }
+}
