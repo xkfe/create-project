@@ -2,18 +2,18 @@
  * @Author: xkfe
  * @Date: 2024-08-31 20:46:06
  * @LastEditors: xkfe
- * @LastEditTime: 2024-08-31 22:54:54
+ * @LastEditTime: 2024-09-01 09:36:37
  * @Description: vite配置文件
  */
-import { defineConfig,loadEnv } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode } ) => {
+export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, 'env')
-  
+
   return {
     plugins: [
       vue(),
@@ -26,7 +26,7 @@ export default defineConfig(({ mode } ) => {
           'src/components/*',
           'src/hooks/*',
         ],
-        dts: './typings/auto-imports.d.ts',
+        dts: 'types/auto-imports.d.ts',
       }),
     ],
     envDir: 'env',
@@ -37,7 +37,7 @@ export default defineConfig(({ mode } ) => {
         [env.VITE_API_URL]: {
           target: env.VITE_PROXY,
           changeOrigin: true,
-          rewrite: (path) => path.replace(new RegExp(`^${env.VITE_API_URL}`), ''),
+          rewrite: path => path.replace(new RegExp(`^${env.VITE_API_URL}`), ''),
         },
       },
     },
