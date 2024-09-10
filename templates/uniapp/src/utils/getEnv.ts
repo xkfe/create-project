@@ -33,7 +33,9 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
       try {
         realName = JSON.parse(realName)
       }
-      catch (error) {}
+      catch (error) {
+        console.error('VITE_PROXY is not a valid JSON string', error)
+      }
     }
     ret[envName] = realName
   }
