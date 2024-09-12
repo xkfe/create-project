@@ -10,11 +10,16 @@
   },
   "dependencies": {
     "@unocss/reset": "^0.62.2",
+    "@vueuse/core": "9.13.0",
+    "alova": "^3.0.16",
+    "es-toolkit": "^1.17.0",
+    "nprogress": "^0.2.0",
     "v-scale-screen": "^2.2.0",
-    "vue": "^3.4.37"
+    "vue": "^3.5.4"
   },
   "devDependencies": {
     "@iconify/utils": "^2.1.32",
+    "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^5.1.2",
     "@vitejs/plugin-vue-jsx": "^4.0.1",
     "typescript": "^5.5.3",
