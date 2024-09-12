@@ -1,5 +1,6 @@
 import path from 'node:path'
 import process from 'node:process'
+import { destr } from 'destr'
 
 export function isDevFn(mode: string): boolean {
   return mode === 'development'
@@ -31,7 +32,7 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
       realName = Number(realName)
     if (envName === 'VITE_PROXY') {
       try {
-        realName = JSON.parse(realName)
+        realName = destr(realName)
       }
       catch (error) {
         console.error('VITE_PROXY is not a valid JSON string', error)

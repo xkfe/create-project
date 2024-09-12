@@ -15,7 +15,7 @@ export default defineConfig(async ({ mode }) => {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
     },
-    plugins: [...vitePlugins(),UnoCSS()],
+    plugins: [...vitePlugins(), UnoCSS()],
     envDir: 'env',
     server: {
       port: viteEnv.VITE_PORT,

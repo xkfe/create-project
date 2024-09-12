@@ -32,7 +32,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
-    "commit-msg": "tsx scripts/verify-commit.js"
+    "commit-msg": "node scripts/verify-commit.js"
   },
   "lint-staged": {
     "*": "eslint --fix"
