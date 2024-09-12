@@ -1,20 +1,61 @@
+<script setup lang="ts">
+import VScaleScreen from 'v-scale-screen'
+import { useRequest } from 'alova/client'
+import { getExampleApi } from '@/api/modules/example'
+
+// 使用alova实例创建method并传给useRequest即可发送请求
+const { loading, data, error, send } = useRequest(getExampleApi, {
+  immediate: false, // 是否立即发送请求，默认为true
+})
+
+function handleSend() {
+  send()
+}
+function handleUpdate() {
+  data.value = { title: 'new title' };
+}
+</script>
+
 <template>
-  <VScaleScreen width="1920" height="1080">
-    <div>
-      <img width="800" alt="Vue logo" src="https://vuejs.org/images/logo.png" />
+    <VScaleScreen width="1920" height="1080" style="background: #f5f5f5">
+      <div>
+      <div v-if="loading">
+        Loading...
+      </div>
+      <div v-else-if="error">
+        {{ error.message }}
+      </div>
+      <div>
+        <div>请求结果: {{ data }}</div>
+        <button class="button" @click="handleSend">
+          手动发送请求
+        </button>
+        <button class="button" @click="handleUpdate">
+          手动修改data
+        </button>
+      </div>
     </div>
   </VScaleScreen>
 </template>
 
-<script setup lang="ts">
-import VScaleScreen from 'v-scale-screen';
-</script>
-
 <style>
 .screen-wrapper {
-  background: #9f76a4;
+  /* background: #f5f5f5; */
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.button {
+  width: 100px;
+  height: 50px;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px;
+  background: teal;
 }
 </style>
