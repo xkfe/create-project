@@ -8,6 +8,7 @@ export default defineConfig(async ({ mode }) => {
   const UnoCSS = (await import('unocss/vite')).default
   const env = loadEnv(mode, 'env')
   const viteEnv = wrapperEnv(env)
+  console.log('object :>> ', createProxy(viteEnv.VITE_PROXY))
 
   return {
     resolve: {
@@ -22,7 +23,7 @@ export default defineConfig(async ({ mode }) => {
       open: viteEnv.VITE_OPEN,
       cors: true,
       // Load proxy configuration from .env.development
-      proxy: createProxy(viteEnv.VITE_PROXY),
+      // proxy: createProxy(viteEnv.VITE_PROXY),
     },
     build: {
       target: 'es6',

@@ -9,6 +9,7 @@
     "node": ">=18.0.0"
   },
   "scripts": {
+    "dev:uniapp": "pnpm -F uniapp dev",
     "dev:visual": "pnpm -F vue-data-visual dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

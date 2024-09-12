@@ -6,6 +6,6 @@ export enum ResultEnum {
   ERROR = 500,
   NOTLOGGED = 401,
   OVERDUE = 402,
-  TIMEOUT = 20000, // 20s
+  TIMEOUT = 5000, // 5s
   TYPE = 'success',
 }

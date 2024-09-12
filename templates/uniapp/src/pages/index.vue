@@ -1,22 +1,5 @@
 <script setup lang="ts">
-import { useNotify, useToast } from 'wot-design-uni'
 import { getExampleApi } from '@/api/modules/example'
-import { useHandleData } from '@/hooks/useHandleData'
-
-const toast = useToast()
-const { showNotify } = useNotify()
-
-function testApi() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('promise resolve')
-    }, 1000)
-  })
-}
-
-function deleteHandle() {
-  useHandleData(testApi, { id: 1 }, '删除')
-}
 
 onMounted(() => {
   // cancel request
@@ -54,19 +37,6 @@ style:
       >
         unocss attributify example
       </view>
-    </view>
-
-    <view mt-30 flex gap-5 text-center>
-      <wd-button @click="toast.success('操作成功')">
-        toast
-      </wd-button>
-      <wd-button type="success" @click="showNotify({ type: 'success', message: '通知内容' })">
-        showNotify
-      </wd-button>
-
-      <wd-button type="warning" @click="deleteHandle">
-        useHandleData
-      </wd-button>
     </view>
   </view>
 </template>
