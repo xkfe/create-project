@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import VScaleScreen from 'v-scale-screen'
+import { useContain } from '@/hooks/useContain'
 import Model from '@/components/Model/index.vue'
 
 // import { useRequest } from 'alova/client'
@@ -10,13 +10,26 @@ import Model from '@/components/Model/index.vue'
 //   force: true,
 // })
 const preReady = ref(true)
+const appContentRef = ref<HTMLElement>()
+
+useContain({
+  el: appContentRef,
+  designWidth: 1920,
+  designHeight: 1080,
+})
 </script>
 
 <template>
-  <VScaleScreen width="1920" height="1080" style="background: #02193a">
-    <Model />
-    <RouterView v-if="preReady" />
-  </VScaleScreen>
+  <div class="app-container">
+    <div ref="appContentRef" class="app-content">
+      <Model />
+      <RouterView v-if="preReady" v-slot="{ Component }">
+        <Transition name="fade-scale">
+          <component :is="Component" />
+        </Transition>
+      </RouterView>
+    </div>
+  </div>
 </template>
 
 <style>
@@ -25,9 +38,9 @@ const preReady = ref(true)
   height: 100%;
   position: absolute;
   background-color: #02193a;
+}
 
-  .app-content {
-    overflow: hidden;
-  }
+.app-container .app-content {
+  overflow: hidden;
 }
 </style>

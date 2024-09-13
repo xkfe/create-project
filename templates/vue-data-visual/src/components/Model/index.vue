@@ -9,13 +9,13 @@ onMounted(() => {
 
 <template>
   <div class="model-container">
-    <iframe class="unity-frame" scrolling="no" src="" width="100%" height="100%" />
+    <iframe class="unity-frame" scrolling="no" src="" width="100%" height="100%" style="display: none" onload="this.style.display='block'" />
   </div>
 </template>
 
 <style>
 .model-container {
-  --offset-y: 100px;
+  --offset-y: 10px;
 
   width: 100%;
   height: 100%;
