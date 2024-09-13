@@ -5,4 +5,6 @@ import '@unocss/reset/tailwind.css'
 import 'uno.css'
 import '@/styles/index.scss'
 
-createApp(App).mount('#app')
+import { router } from '@/router'
+
+createApp(App).use(router).mount('#app')
