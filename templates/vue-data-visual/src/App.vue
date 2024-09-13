@@ -1,29 +1,31 @@
 <script setup lang="ts">
 import VScaleScreen from 'v-scale-screen'
 import { useRequest } from 'alova/client'
-import { getExampleApi } from '@/api/modules/example'
+import { getExampleAPI } from '@/api/modules/example'
 
 // 使用alova实例创建method并传给useRequest即可发送请求
-const { loading, data, error, send } = useRequest(getExampleApi, {
+const { loading, data, error, send, abort } = useRequest(getExampleAPI, {
   immediate: false, // 是否立即发送请求，默认为true
+  force: true,
 })
 
 function handleSend() {
+  abort()
   send()
 }
 function handleUpdate() {
-  data.value = { title: 'new title' };
+  data.value = { title: 'new title' }
 }
 </script>
 
 <template>
-    <VScaleScreen width="1920" height="1080" style="background: #f5f5f5">
-      <div>
+  <VScaleScreen width="1920" height="1080" style="background: #02193a">
+    <div>
       <div v-if="loading">
         Loading...
       </div>
       <div v-else-if="error">
-        {{ error.message }}
+        {{ error }}
       </div>
       <div>
         <div>请求结果: {{ data }}</div>
