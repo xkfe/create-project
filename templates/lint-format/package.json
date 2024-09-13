@@ -1,0 +1,35 @@
+{
+  "name": "lint-format",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "commit": "git-cz",
+    "cz": "git-cz"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.26.0",
+    "@unocss/eslint-plugin": "^0.62.2",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.9.4",
+    "eslint": "^9.9.0",
+    "eslint-plugin-format": "^0.1.2",
+    "lint-staged": "^15.2.9",
+    "simple-git-hooks": "^2.11.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "node scripts/verify-commit.js"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  }
+}
