@@ -2,7 +2,7 @@
  * @Author: xkfe
  * @Date: 2024-08-31 20:46:06
  * @LastEditors: xkfe
- * @LastEditTime: 2024-09-10 22:38:12
+ * @LastEditTime: 2024-09-13 16:37:30
  * @Description: vite配置文件
  */
 import { URL, fileURLToPath } from 'node:url'
@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
   const viteEnv = wrapperEnv(env)
 
   return {
-    plugins: vitePlugins(),
+    plugins: vitePlugins(viteEnv),
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),

@@ -2,7 +2,7 @@
  * @Author: xkfe
  * @Date: 2024-09-10 22:35:12
  * @LastEditors: xkfe
- * @LastEditTime: 2024-09-10 22:36:59
+ * @LastEditTime: 2024-09-13 16:41:43
  * @Description: vite 插件配置
  */
 import type { PluginOption } from 'vite'
@@ -12,13 +12,16 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Icons from 'unplugin-icons/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import viteCompression from 'vite-plugin-compression'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 /**
  * @description: Vite plugin list
  * @param {*} PluginOption
  * @return {*}
  */
-export function vitePlugins(): (PluginOption | PluginOption[])[] {
+export function vitePlugins(viteEnv: ViteEnv): (PluginOption | PluginOption[])[] {
+  const { VITE_DEVTOOLS, VITE_REPORT } = viteEnv
   return [
     vue(),
     vueJsx(),
@@ -37,6 +40,42 @@ export function vitePlugins(): (PluginOption | PluginOption[])[] {
     Icons({
       autoInstall: true,
     }),
-    VueDevTools(),
+    // 创建打包压缩配置
+    createCompression(viteEnv),
+
+    // 是否启用 vue 调试工具
+    VITE_DEVTOOLS && VueDevTools(),
+
+    // 是否生成包预览，分析依赖包大小做优化处理
+    VITE_REPORT && (visualizer({ filename: 'stats.html', gzipSize: true, brotliSize: true }) as PluginOption),
   ]
 };
+
+/**
+ * @description 根据 compress 配置，生成不同的压缩规则
+ * @param viteEnv
+ */
+function createCompression(viteEnv: ViteEnv): PluginOption | PluginOption[] {
+  const { VITE_BUILD_COMPRESS = 'none', VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE } = viteEnv
+  const compressList = VITE_BUILD_COMPRESS.split(',')
+  const plugins: PluginOption[] = []
+  if (compressList.includes('gzip')) {
+    plugins.push(
+      viteCompression({
+        ext: '.gz',
+        algorithm: 'gzip',
+        deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE,
+      }),
+    )
+  }
+  if (compressList.includes('brotli')) {
+    plugins.push(
+      viteCompression({
+        ext: '.br',
+        algorithm: 'brotliCompress',
+        deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE,
+      }),
+    )
+  }
+  return plugins
+}
