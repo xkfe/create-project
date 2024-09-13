@@ -11,32 +11,20 @@
   "scripts": {
     "dev:uniapp": "pnpm -F uniapp dev",
     "dev:visual": "pnpm -F vue-data-visual dev",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "commit": "git-cz",
     "cz": "git-cz",
     "release": "bumpp --commit --push --tag"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.26.0",
     "@changesets/cli": "^2.27.7",
     "@types/node": "^22.4.2",
-    "@unocss/eslint-plugin": "^0.62.2",
     "bumpp": "^9.5.1",
     "commitizen": "^4.3.0",
     "cz-git": "^1.9.4",
-    "eslint": "^9.9.0",
-    "eslint-plugin-format": "^0.1.2",
-    "lint-staged": "^15.2.9",
-    "simple-git-hooks": "^2.11.1",
-    "tsx": "^4.17.0"
+    "simple-git-hooks": "^2.11.1"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged",
     "commit-msg": "node scripts/verify-commit.js"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
   },
   "config": {
     "commitizen": {

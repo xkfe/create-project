@@ -10,8 +10,8 @@ const green = '\x1B[32m'
 const bgRedWhite = '\x1B[41m\x1B[37m'
 
 const msgPath = path.resolve('.git/COMMIT_EDITMSG')
-const commitRE
-  = /^(revert: )?(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release)(\(.+\))?: .{1,50}/
+// eslint-disable-next-line regexp/no-unused-capturing-group
+const commitRE = /^(revert: )?(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release)(\(.+\))?: .{1,50}/
 const msg = readFileSync(msgPath, 'utf-8').trim()
 
 if (!commitRE.test(msg)) {
