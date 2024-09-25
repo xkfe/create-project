@@ -12,7 +12,8 @@
       "miniprogram-api-typings",
       "mini-types",
       "wot-design-uni/global.d.ts",
-      "@uni-helper/uni-app-types"
+      "@uni-helper/uni-app-types",
+      "z-paging/global.d.ts"
     ],
     "sourceMap": true
   },
