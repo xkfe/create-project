@@ -2,7 +2,7 @@
 
 </script>
 
-<route type="home" lang="yaml">
+<route lang="yaml">
 style:
   navigationBarTitleText: "我的"
 </route>

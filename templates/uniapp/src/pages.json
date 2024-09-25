@@ -1,31 +1,31 @@
 {
   "pages": [
     {
-      "path": "pages/my/index",
+      "path": "pages/index",
       "type": "home",
       "style": {
-        "navigationBarTitleText": "我的"
-      }
-    },
-    {
-      "path": "pages/hooks/index",
-      "type": "home",
-      "style": {
-        "navigationBarTitleText": "hooks示例"
+        "navigationBarTitleText": "首页"
       }
     },
     {
       "path": "pages/components/index",
-      "type": "home",
+      "type": "page",
       "style": {
         "navigationBarTitleText": "组件示例"
       }
     },
     {
-      "path": "pages/index",
-      "type": "home",
+      "path": "pages/hooks/index",
+      "type": "page",
       "style": {
-        "navigationBarTitleText": "首页"
+        "navigationBarTitleText": "hooks示例"
+      }
+    },
+    {
+      "path": "pages/my/index",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "我的"
       }
     }
   ],

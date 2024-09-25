@@ -16,24 +16,26 @@ function useConfirmExample() {
 }
 </script>
 
-<route type="home" lang="yaml">
+<route lang="yaml">
 style:
   navigationBarTitleText: "hooks示例"
 </route>
 
 <template>
-  <view class="hooks-container">
-    <view class="hooks-item" @click="useConfirmExample">
-      useConfirm
+  <view class="hooks-page">
+    <view class="hooks-container">
+      <view class="card" @click="useConfirmExample">
+        useConfirm
+      </view>
     </view>
   </view>
 </template>
 
 <style lang="scss" scoped>
-.hooks-container {
-  --at-apply: w-full h-auto bg-#F5F5F5 p-12 grid grid-cols-2 gap-12;
+.hooks-page {
+  --at-apply: h-full bg-#F5F5F5;
 }
-.hooks-item {
-  --at-apply: text-center px-12 py-8 font-700 color-#333 rounded-6 shadow-[0px_0px_34px_0px_rgba(0,0,0,0.09)];
+.hooks-container {
+  --at-apply: w-full h-auto p-12 grid grid-cols-2 gap-12;
 }
 </style>
