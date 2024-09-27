@@ -1,15 +1,16 @@
 import process from 'node:process'
+import { readFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
+import ci from 'miniprogram-ci'
 import dayjs from 'dayjs'
-import zhCn from 'dayjs/esm/locale/zh-cn'
+import zhCn from 'dayjs/locale/zh-cn.js'
 import { loadEnv } from 'vite'
 
 dayjs.locale(zhCn)
 
-// import ci from 'miniprogram-ci' // miniprogram-ci 不支持 ESM
-const ci = require('miniprogram-ci')
-
 const GIT_GLOBAL_USERNAME = execFileSync('git', ['config', '--global', 'user.name'], { encoding: 'utf-8' })
+const packageJSON = JSON.parse(readFileSync('./package.json'))
+
 const MODE = process.argv.slice(2)?.pop() || 'production'
 const ENV = loadEnv(MODE, 'env')
 console.log('upload ENV APP_ID :>> ', ENV.VITE_APP_ID)
@@ -26,7 +27,7 @@ console.log('upload ENV APP_ID :>> ', ENV.VITE_APP_ID)
   try {
     await ci.upload({
       project,
-      version: '0.2.0',
+      version: packageJSON.version,
       desc: `${localeNow} - by@${GIT_GLOBAL_USERNAME || '小凯同学'}`,
       setting: {
         minify: true,
@@ -39,6 +40,7 @@ console.log('upload ENV APP_ID :>> ', ENV.VITE_APP_ID)
       //   console.log('上传中：', e)
       // },
     })
+    // console.log('上传成功')
     console.log('上传成功')
   }
   catch (error) {

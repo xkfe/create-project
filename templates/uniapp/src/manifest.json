@@ -1,6 +1,6 @@
 {
   "name": "uniapp",
-  "appid": "",
+  "appid": "wx4c4d16a3993ff5e1",
   "description": "",
   "versionName": "1.0.0",
   "versionCode": "100",
@@ -47,7 +47,7 @@
   },
   "quickapp": {},
   "mp-weixin": {
-    "appid": "",
+    "appid": "wx4c4d16a3993ff5e1",
     "setting": {
       "urlCheck": false
     },
