@@ -1,16 +1,22 @@
 <script setup lang="ts">
-
+function navigateTo(url: string) {
+  uni.navigateTo({ url })
+}
 </script>
 
-<route lang="yaml">
-style:
-  navigationBarTitleText: "组件示例"
+<route lang="json">
+{
+  "style": {
+    "navigationBarTitleText": "组件示例",
+    "disableScroll": false
+  }
+}
 </route>
 
 <template>
   <view class="components-page">
     <view class="components-container">
-      <view class="card">
+      <view class="card" @click="navigateTo('/pages/components/demos/z-padding')">
         z-paging
       </view>
     </view>

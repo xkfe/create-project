@@ -7,7 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AppFooter: typeof import('./../src/components/AppFooter.vue')['default']
+    SwiperListItemSwiperListItem: typeof import('./../src/components/swiper-list-item/swiper-list-item.vue')['default']
     WdButton: typeof import('wot-design-uni/components/wd-button/wd-button.vue')['default']
     WdConfigProvider: typeof import('wot-design-uni/components/wd-config-provider/wd-config-provider.vue')['default']
     WdIcon: typeof import('wot-design-uni/components/wd-icon/wd-icon.vue')['default']
@@ -17,6 +17,11 @@ declare module 'vue' {
     WdNotify: typeof import('wot-design-uni/components/wd-notify/wd-notify.vue')['default']
     WdOverlay: typeof import('wot-design-uni/components/wd-overlay/wd-overlay.vue')['default']
     WdPopup: typeof import('wot-design-uni/components/wd-popup/wd-popup.vue')['default']
+    WdResize: typeof import('wot-design-uni/components/wd-resize/wd-resize.vue')['default']
+    WdSticky: typeof import('wot-design-uni/components/wd-sticky/wd-sticky.vue')['default']
+    WdStickyBox: typeof import('wot-design-uni/components/wd-sticky-box/wd-sticky-box.vue')['default']
+    WdTab: typeof import('wot-design-uni/components/wd-tab/wd-tab.vue')['default']
+    WdTabs: typeof import('wot-design-uni/components/wd-tabs/wd-tabs.vue')['default']
     WdToast: typeof import('wot-design-uni/components/wd-toast/wd-toast.vue')['default']
     WdTransition: typeof import('wot-design-uni/components/wd-transition/wd-transition.vue')['default']
   }

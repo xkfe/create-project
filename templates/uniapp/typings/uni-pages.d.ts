@@ -7,7 +7,8 @@ interface NavigateToOptions {
   url: "/pages/index" |
        "/pages/components/index" |
        "/pages/hooks/index" |
-       "/pages/my/index";
+       "/pages/my/index" |
+       "/pages/components/demos/z-padding";
 }
 interface RedirectToOptions extends NavigateToOptions {}
 

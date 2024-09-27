@@ -2,9 +2,13 @@
 
 </script>
 
-<route lang="yaml">
-style:
-  navigationBarTitleText: "我的"
+<route lang="json">
+{
+  "style": {
+    "navigationBarTitleText": "我的",
+    "disableScroll": false
+  }
+}
 </route>
 
 <template>

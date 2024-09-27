@@ -16,9 +16,13 @@ function useConfirmExample() {
 }
 </script>
 
-<route lang="yaml">
-style:
-  navigationBarTitleText: "hooks示例"
+<route lang="json">
+{
+  "style": {
+    "navigationBarTitleText": "hooks示例",
+    "disableScroll": false
+  }
+}
 </route>
 
 <template>

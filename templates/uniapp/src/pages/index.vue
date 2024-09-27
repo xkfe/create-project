@@ -3,19 +3,23 @@ import { getExampleApi } from '@/api/modules/example'
 
 onMounted(() => {
   // cancel request
-  getExampleApi().then((res) => {
-    console.log(res)
-  })
+  // getExampleApi().then((res) => {
+  //   console.log(res)
+  // })
 
-  setTimeout(() => {
-    getExampleApi()
-  }, 0)
+  // setTimeout(() => {
+  //   getExampleApi()
+  // }, 0)
 })
 </script>
 
-<route type="home" lang="yaml">
-style:
-  navigationBarTitleText: "首页"
+<route type="home" lang="json">
+{
+  "style": {
+    "navigationBarTitleText": "首页",
+    "disableScroll": false
+  }
+}
 </route>
 
 <template>

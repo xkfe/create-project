@@ -1,6 +1,19 @@
 import { defineUniPages } from '@uni-helper/vite-plugin-uni-pages'
 
 export default defineUniPages({
+  globalStyle: {
+    navigationBarTextStyle: 'black',
+    navigationBarTitleText: 'uniapp',
+    navigationBarBackgroundColor: '#F8F8F8',
+    backgroundColor: '#F8F8F8',
+    // navigationStyle: 'custom',
+  },
+  subPackages: [],
+  easycom: {
+    custom: {
+      '^(?!z-paging-refresh|z-paging-load-more)z-paging(.*)': 'z-paging/components/z-paging$1/z-paging$1.vue',
+    },
+  },
   pages: [],
   tabBar: {
     color: '#AAA',
@@ -9,7 +22,7 @@ export default defineUniPages({
     // backgroundColor: '#FFF',
     backgroundColor: 'rgba(255,255,255,0.3)' as any,
     fontSize: '12px',
-    blurEffect: 'extralight',
+    // blurEffect: 'extralight',
     height: '56px',
     list: [
       {
@@ -38,12 +51,4 @@ export default defineUniPages({
       },
     ],
   },
-  globalStyle: {
-    navigationBarTextStyle: 'black',
-    navigationBarTitleText: 'uniapp',
-    navigationBarBackgroundColor: '#F8F8F8',
-    backgroundColor: '#F8F8F8',
-    // navigationStyle: 'custom',
-  },
-  subPackages: [],
 })
