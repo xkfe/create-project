@@ -1,15 +1,17 @@
 /*
  * @Author: xkfe xkfe16@gmail.com
  * @Date: 2024-10-01 15:53:39
- * @LastEditors: xkfe xkfe16@gmail.com
- * @LastEditTime: 2024-10-01 23:22:18
+ * @LastEditors: xkfe
+ * @LastEditTime: 2024-09-26 15:40:14
  * @Description: 请求封装
  */
 import { un } from '@uni-helper/uni-network'
 import type { UnConfig, UnError, UnInstance } from '@uni-helper/uni-network'
 import { ResultEnum } from './httpEnum'
 import { showFullScreenLoading, tryHideFullScreenLoading } from './serviceLoading'
+// #ifdef H5
 import NProgress from './nprogress'
+// #endif
 import { checkStatus } from './checkStatus'
 import { RequestCanceler } from './cancel'
 import { TOKENNAME } from '@/config'
