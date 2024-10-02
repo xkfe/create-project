@@ -1,0 +1,79 @@
+{
+  "name": "@xkfe/create-project",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "✨创建开箱即用的前端快速开发模板的 cli 工具,包含后台、官网、小程序、H5等,提高效率，避免重复搭建",
+  "author": "xkfe <xkfe0516@gmail.com> (https://github.com/xkfe)",
+  "license": "MIT",
+  "homepage": "https://github.com/xkfe/project-templates/packages/cli",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xkfe/project-templates"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/xkfe/project-templates/issues"
+  },
+  "keywords": [
+    "template",
+    "create-project",
+    "vue",
+    "react",
+    "uni-app",
+    "admin"
+  ],
+  "bin": {
+    "create-project": "dist/outfile.cjs",
+    "create-template": "dist/outfile.cjs",
+    "create-xkfe-project": "dist/outfile.cjs"
+  },
+  "files": [
+    "../templates",
+    "dist/outfile.cjs"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "release": "bumpp",
+    "commit": "git-cz",
+    "cz": "git-cz"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.7.3",
+    "@types/envinfo": "^7.8.4",
+    "@types/minimist": "^1.2.5",
+    "@types/node": "^22.7.4",
+    "@types/prompts": "^2.4.9",
+    "bumpp": "^9.6.0",
+    "commander": "^12.1.0",
+    "commitizen": "^4.3.1",
+    "cz-git": "^1.9.4",
+    "envinfo": "^7.14.0",
+    "eslint": "^9.11.1",
+    "fs-extra": "^11.2.0",
+    "kolorist": "^1.8.0",
+    "lint-staged": "^15.2.10",
+    "minimist": "^1.2.8",
+    "prompts": "^2.4.2",
+    "simple-git-hooks": "^2.11.1",
+    "terser": "^5.34.1",
+    "tiged": "^2.12.7",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2",
+    "unbuild": "^2.0.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "node scripts/verify-commit.js"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  }
+}

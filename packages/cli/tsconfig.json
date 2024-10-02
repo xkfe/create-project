@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": ["src/*"] // 将 "@/config" 映射到 "src/config"
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  }
+}
