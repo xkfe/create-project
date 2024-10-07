@@ -1,7 +1,7 @@
 {
   "name": "@xkfe/create-project",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "✨创建开箱即用的前端快速开发模板的 cli 工具,包含后台、官网、小程序、H5等,提高效率，避免重复集成",
   "author": "xkfe<xkfe16@gmail.com>",
   "license": "MIT",
@@ -29,6 +29,7 @@
   "files": [
     "!templates/*/dist",
     "!templates/*/node_modules",
+    "!templates/vue-data-visual/public/unity-model",
     "dist/outfile.cjs",
     "templates/"
   ],
