@@ -4,7 +4,7 @@
 
 >⚠️ `Unpacked Size 比较大是因为 vue-data-visual public 文件夹下放置了一个模型文件占用 45.3 M`
 
-<img align="left" width="741" alt="create-project" src="https://github.com/user-attachments/assets/4e033147-7b09-45ad-80cd-a36c7cdc55c4">
+<p align="left" ><img width="741" alt="create-project" src="https://github.com/user-attachments/assets/4e033147-7b09-45ad-80cd-a36c7cdc55c4"></p>
 
 ## 使用
 
