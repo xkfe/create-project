@@ -1,5 +1,7 @@
 import type { AskQuestionsOptions } from '@/types'
 import type { PromptObject } from 'prompts'
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
 import process from 'node:process'
 import { SOURCE_TYPES } from '@/config'
 import { hint } from '@/constants'
@@ -26,6 +28,25 @@ export async function askQuestions(options: AskQuestionsOptions): Promise<AskQue
         hint,
       })
     }
+    else {
+      const projectPath = join(process.cwd(), options.projectName)
+      if (existsSync(projectPath)) {
+        // 文件夹已存在，询问是否覆盖
+        const overwrite = await prompts({
+          type: 'toggle',
+          name: 'overwrite',
+          message: `项目名称 "${options.projectName}" 已存在，是否覆盖?`,
+          initial: false,
+          active: '是',
+          inactive: '否',
+        })
+
+        if (!overwrite.overwrite) {
+          console.log('操作已取消。')
+          process.exit(1)
+        }
+      }
+    }
 
     questions.push(...confirmOverwrite())
 
@@ -44,20 +65,20 @@ export async function askQuestions(options: AskQuestionsOptions): Promise<AskQue
     }
 
     if (!options.source) {
-      questions.push({
-        type: 'select',
-        name: 'source',
-        message: '请选择拉取源:',
-        choices: SOURCE_TYPES.map((t) => {
-          return {
-            title: t,
-            disabled: t !== 'cli templates',
-          }
-        }),
-        initial: 0,
-        hint,
-        warn: '拉取指定仓库目录,正寻求方案中...',
-      })
+      // questions.push({
+      //   type: 'select',
+      //   name: 'source',
+      //   message: '请选择拉取源:',
+      //   choices: SOURCE_TYPES.map((t) => {
+      //     return {
+      //       title: t,
+      //       disabled: t !== 'cli templates',
+      //     }
+      //   }),
+      //   initial: 0,
+      //   hint,
+      //   warn: '拉取指定仓库目录,正寻求方案中...',
+      // })
     }
     else {
       validateSource(options.source)
@@ -65,7 +86,7 @@ export async function askQuestions(options: AskQuestionsOptions): Promise<AskQue
 
     const answers = await prompts(questions, { onCancel })
     answers.template = typeof answers.template === 'number' ? templates[answers.template].name : (answers.template || options.template)
-    answers.source = typeof answers.source === 'number' ? SOURCE_TYPES[answers.source] : (answers.source || options.source)
+    answers.source = typeof answers.source === 'number' ? SOURCE_TYPES[answers.source] : (answers.source || options.source || 'cli templates')
     return { ...options, ...answers }
   }
   catch (cancelled) {

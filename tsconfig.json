@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "target": "es2018",
+    "lib": ["ESNext"],
     "baseUrl": "./",
     "module": "ESNext",
     "moduleResolution": "node",
@@ -7,6 +9,11 @@
       "@/*": ["src/*"] // 将 "@/config" 映射到 "src/config"
     },
     "resolveJsonModule": true,
-    "esModuleInterop": true
-  }
+    // "strict": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"]
 }

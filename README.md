@@ -1,15 +1,46 @@
-# project-templates
-✨开箱即用的前端各种项目快速开发模板,包含后台、官网、小程序、H5、可视化大屏等,提高效率, 避免从0 创建项目！
+<h1 align="center">@xkfe/create-project</h1>
 
-## 模板TODO
+<p align="center">✨开箱即用的前端各种项目快速开发模板,包含后台、官网、小程序、H5、可视化大屏等,提高效率, 避免重复集成项目！</p>
 
-- [ ] ***[uniapp](https://github.com/xkfe/project-templates/tree/main/templates/uniapp)***
-- [ ] ***[Vue + ECharts 自适应数据大屏](https://github.com/xkfe/project-templates/tree/main/templates/vue-data-visual)***
+>⚠️ `Unpacked Size 比较大是因为 vue-data-visual public 文件夹下放置了一个模型文件占用 45.3 M`
 
+## 使用
+
+```shell
+# npm | yarn | pnpm
+npx @xkfe/create-project
+pnpx @xkfe/create-project
+
+# 或
+pnpm add @xkfe/create-project -g
+create-project | create-template | create-xkfe-project
+```
+
+## 快速使用
+
+```shell
+pnpm create xkfe-project <项目名称> -t <模板名称>
+pnpx @xkfe/create-project mall-wx -t uniapp
+```
+
+### 参数说明
+
+Usage: @xkfe/create-project <project-name> [options]
+
+Options:
+
+- -V, --version              output the version number
+- -t, --template <template>  Specify the frontend template
+- -s, --source <source>      Specify the source to pull template from (**cli templates** ~~github~~, ~~gitee~~)
+- -h, --help                 display help for command
+
+## 模板列表
+
+> Tip:
+>
+> github: [create-project/templates](https://github.com/xkfe/project-templates/tree/main/create-project/tree/main/templates) **/** gitee: [create-project/templates](https://gitee.com/XKFE/create-project/tree/main/templates) 下文件
+>
+> - [ ] ***[uniapp](https://github.com/xkfe/project-templates/tree/main/templates/uniapp)***
+> - [ ] ***[vue-data-visual](https://github.com/xkfe/project-templates/tree/main/templates/vue-data-visual)***
 
 ## 模板截图
-
-
-
-
-

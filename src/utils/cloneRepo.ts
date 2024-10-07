@@ -26,8 +26,11 @@ async function removeGitFolder(localPath: string): Promise<void> {
 
   // 删除 dist 目录
   const distFolderPath = join(localPath, 'dist')
-  console.log(distFolderPath, 222)
   await fs.rm(distFolderPath, { recursive: true, force: true })
+
+  // 删除 node_modules 目录
+  const nodeModulesFolderPath = join(localPath, 'node_modules')
+  await fs.rm(nodeModulesFolderPath, { recursive: true, force: true })
 }
 
 async function cloneRepo(gitUrl: string, localPath: string): Promise<void> {
@@ -66,7 +69,7 @@ function getRepoUrl(template: TemplateName, repoSource: typeof SOURCE_TYPES[numb
 
 async function downloadUrlTemplate(options: AskQuestionsOptions & { root: string }) {
   const { template, source, root } = options
-  const repoUrl = getRepoUrl(template as TemplateName, source)
+  const repoUrl = getRepoUrl(template as TemplateName, source!)
   loading = ora(`${bold(`正在从 ${repoUrl} 拉取项目...`)}`).start()
   await cloneRepo(repoUrl, root)
 }
@@ -76,7 +79,7 @@ async function downloadCliTemplate(options: AskQuestionsOptions & { root: string
   loading = ora(`${bold('正在创建模板...')}`).start()
   // const __dirname = dirname(new URL(import.meta.url).pathname)
   const templateRoot = resolve(__dirname, './../templates')
-  const templatePath = join(templateRoot, template)
+  const templatePath = join(templateRoot, template!)
   await fs.copy(templatePath, root)
   await removeGitFolder(root)
 }
@@ -90,7 +93,7 @@ export async function dowload(options: AskQuestionsOptions & { root: string }) {
     else {
       await downloadUrlTemplate(options)
     }
-    replaceProjectName(root, projectName)
+    replaceProjectName(root, projectName!)
     printFinish(root, cwd, packageManager, loading)
   }
   catch (error) {
