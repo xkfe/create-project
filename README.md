@@ -4,40 +4,44 @@
 
 >⚠️ `Unpacked Size 比较大是因为 vue-data-visual public 文件夹下放置了一个模型文件占用 45.3 M`
 
+<img align="left" width="741" alt="create-project" src="https://github.com/user-attachments/assets/4e033147-7b09-45ad-80cd-a36c7cdc55c4">
+
 ## 使用
 
 ```shell
 # npm | yarn | pnpm
-npx @xkfe/create-project
-pnpx @xkfe/create-project
+npx @xkfe/create-project@latest
+pnpx @xkfe/create-project@latest
 
 # 或
-pnpm add @xkfe/create-project -g
+pnpm add @xkfe/create-project@latest -g
 create-project | create-template | create-xkfe-project
 ```
 
 ## 快速使用
 
 ```shell
-pnpm create xkfe-project <项目名称> -t <模板名称>
-pnpx @xkfe/create-project mall-wx -t uniapp
+pnpx @xkfe/create-project@latest <项目名称> -t <模板名称>
+pnpx @xkfe/create-project@latest mall-wx -t uniapp
 ```
 
-### 参数说明
+> [!TIP]
+> 建议添加上标记名（@latest），否则 npm 可能会解析到缓存的过时软件包版本。
+
+## 参数说明
 
 Usage: @xkfe/create-project <project-name> [options]
 
 Options:
-
 - -V, --version              output the version number
-- -t, --template <template>  Specify the frontend template
-- -s, --source <source>      Specify the source to pull template from (**cli templates** ~~github~~, ~~gitee~~)
+- -t, --template \<template\>  Specify the frontend template
+- -s, --source \<source\>      Specify the source to pull template from (**cli templates** ~~github~~, ~~gitee~~)
 - -h, --help                 display help for command
+
 
 ## 模板列表
 
-> Tip:
->
+> 
 > github: [create-project/templates](https://github.com/xkfe/project-templates/tree/main/create-project/tree/main/templates) **/** gitee: [create-project/templates](https://gitee.com/XKFE/create-project/tree/main/templates) 下文件
 >
 > - [ ] ***[uniapp](https://github.com/xkfe/project-templates/tree/main/templates/uniapp)***
