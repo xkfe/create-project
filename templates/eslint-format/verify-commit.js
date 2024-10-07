@@ -1,7 +1,7 @@
 // @ts-check
 import { readFileSync } from 'node:fs'
-import process from 'node:process'
 import path from 'node:path'
+import process from 'node:process'
 
 // Define raw escape codes for colors
 const reset = '\x1B[0m'

@@ -1,7 +1,8 @@
 {
-  "name": "lint-format",
+  "name": "eslint-format",
   "type": "module",
   "version": "0.0.0",
+  "private": true,
   "description": "",
   "keywords": [],
   "scripts": {
