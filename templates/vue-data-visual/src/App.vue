@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useContain } from '@/hooks/useContain'
-import Model from '@/components/Model/index.vue'
+import WebGLModel from '@/components/WebGLModel/index.vue'
 
 // import { useRequest } from 'alova/client'
 // import { getExampleAPI } from '@/api/modules/example'
@@ -22,7 +22,7 @@ useContain({
 <template>
   <div class="app-container">
     <div ref="appContentRef" class="app-content">
-      <Model />
+      <WebGLModel />
       <RouterView v-if="preReady" v-slot="{ Component }">
         <Transition name="fade-scale">
           <component :is="Component" />

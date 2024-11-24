@@ -2,7 +2,7 @@
  * @Author: xkfe
  * @Date: 2024-09-10 22:35:12
  * @LastEditors: xkfe
- * @LastEditTime: 2024-09-13 16:41:43
+ * @LastEditTime: 2024-11-24 15:47:02
  * @Description: vite 插件配置
  */
 import type { PluginOption } from 'vite'
@@ -23,7 +23,14 @@ import { visualizer } from 'rollup-plugin-visualizer'
 export function vitePlugins(viteEnv: ViteEnv): (PluginOption | PluginOption[])[] {
   const { VITE_DEVTOOLS, VITE_REPORT } = viteEnv
   return [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          // 将 micro-app 标记为 自定义元素，避免 Vue 对这些标签进行默认的解析和处理。
+          isCustomElement: tag => ['micro-app'].includes(tag),
+        },
+      },
+    }),
     vueJsx(),
     UnoCSS(),
     // https://github.com/unplugin/unplugin-auto-import 配置自动导入 vue相关函数

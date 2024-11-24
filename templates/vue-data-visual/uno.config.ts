@@ -5,8 +5,9 @@ import {
   presetIcons,
   presetUno,
   transformerDirectives,
-  transformerVariantGroup
+  transformerVariantGroup,
 } from 'unocss'
+import presetRemToPx from '@unocss/preset-rem-to-px'
 
 // loader helpers
 import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
@@ -20,6 +21,7 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
+    presetRemToPx({ baseFontSize: 4 }),
     presetIcons({
       extraProperties: {
         'display': 'inline-block',

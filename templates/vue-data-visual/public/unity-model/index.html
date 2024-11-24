@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Unity WebGL Player | hssw</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
-    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Unity WebGL Player</title>
+    <link rel="stylesheet" href="./model.css" />
   </head>
+
   <body>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" tabindex="-1"></canvas>
       <div class="bg">
-        <img src="./assets/img/bg.png" alt="" />
+        <!-- <img src="./assets/img/bg.png" alt=""> -->
       </div>
       <div class="model-loading">
         <div class="model-loading-box">
           <div class="progress-bar">
-            <div class="progress-bar-track" style="width: 0%" />
+            <div class="progress-bar-track" style="width: 0%"></div>
           </div>
           <div class="messages">
             <span class="message-1">3D模型加载</span>
@@ -24,66 +24,74 @@
           </div>
         </div>
       </div>
-
       <div id="unity-warning"></div>
     </div>
     <script>
-      var container = document.querySelector('#unity-container')
-      var canvas = document.querySelector('#unity-canvas')
-      var loadingBg = document.querySelector('.bg')
-      var loadingBar = document.querySelector('.model-loading')
-      var progressBarFull = document.querySelector('.progress-bar-track')
-      var messageNum = document.querySelector('.messages .message-2')
-      var fullscreenButton = document.querySelector('#unity-fullscreen-button')
-      var warningBanner = document.querySelector('#unity-warning')
+      const container = document.querySelector('#unity-container')
+      const canvas = document.querySelector('#unity-canvas')
+      const loadingBg = document.querySelector('.bg')
+      const loadingBar = document.querySelector('.model-loading')
+      const progressBarFull = document.querySelector('.progress-bar-track')
+      const messageNum = document.querySelector('.messages .message-2')
+      const fullscreenButton = document.querySelector('#unity-fullscreen-button')
+      const warningBanner = document.querySelector('#unity-warning')
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
+      /**
+       * 显示临时消息横幅/提示框，或在 canvas 顶部显示永久错误消息。
+       * - 当 type 为 'error' 时，显示红色背景的错误消息，且不会自动消失。
+       * - 当 type 为 'warning' 时，显示黄色背景的警告消息，并在 5 秒后自动消失。
+       * - 如果需要自定义非关键警告和错误消息的显示方式，可以修改此函数。
+       *
+       * @param {string} msg - 消息内容。
+       * @param {string} type - 消息类型，可为 'error' 或 'warning'。
+       */
       function unityShowBanner(msg, type) {
+        // 更新警告横幅的可见性
         function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'none' : 'none'
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none'
         }
-        var div = document.createElement('div')
+        // 创建消息容器
+        const div = document.createElement('div')
         div.innerHTML = msg
+
         warningBanner.appendChild(div)
-        if (type == 'error') div.style = 'background: red; padding: 10px;'
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;'
-          setTimeout(function () {
-            warningBanner.removeChild(div)
-            updateBannerVisibility()
+        if (type === 'error') {
+          div.style.cssText = 'background: red; color: white; padding: 10px; margin: 5px 0;'
+        } else if (type === 'warning') {
+          div.style.cssText = 'background: yellow; color: black; padding: 10px; margin: 5px 0;'
+          // 5 秒后自动移除警告消息
+          setTimeout(() => {
+            if (div.parentNode) {
+              warningBanner.removeChild(div)
+              updateBannerVisibility()
+            }
           }, 5000)
         }
         updateBannerVisibility()
       }
 
-      var buildUrl = 'build'
-      var loaderUrl = buildUrl + '/huashanunity.loader.js'
-      var config = {
-        dataUrl: buildUrl + '/huashanunity.data',
-        frameworkUrl: buildUrl + '/huashanunity.framework.js',
-        codeUrl: buildUrl + '/huashanunity.wasm',
+      console.log('model viteEnv :>> ', window.rawWindow.viteEnv)
+      const MODEL_BUILD_URL = 'https://qcdl-bucket.oss-cn-beijing.aliyuncs.com/zero-backend/3DModel/Build'
+      const loaderUrl = `${MODEL_BUILD_URL}/ltyV3_10.22.loader.js`
+      const config = {
+        dataUrl: `${MODEL_BUILD_URL}/ltyV3_10.22.data`,
+        frameworkUrl: `${MODEL_BUILD_URL}/ltyV3_10.22.framework.js`,
+        codeUrl: `${MODEL_BUILD_URL}/ltyV3_10.22.wasm`,
         streamingAssetsUrl: 'StreamingAssets',
         companyName: 'DefaultCompany',
-        productName: 'hssw',
+        productName: 'unity-webgl',
         productVersion: '0.1',
         showBanner: unityShowBanner,
       }
 
-      // By default, Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
-
+      /**
+       * 默认情况下，Unity 会将 WebGL canvas 的渲染目标尺寸与 canvas 元素的 DOM 尺寸同步
+       * （通过 `window.devicePixelRatio` 缩放）。
+       * 如果希望手动控制 canvas 的 DOM 尺寸和 WebGL 渲染目标尺寸的同步，可以将以下配置设置为 false：
+       * config.matchWebGLToCanvasSize = false;
+       */
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-
+        // 移动设备风格：用画布填充整个浏览器客户端区域
         var meta = document.createElement('meta')
         meta.name = 'viewport'
         meta.content =
@@ -92,19 +100,20 @@
         container.className = 'unity-mobile'
         canvas.className = 'unity-mobile'
 
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
+        // 如果需要降低移动设备上的 canvas 分辨率以提高性能，请取消注释以下行：
         // config.devicePixelRatio = 1;
       } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        // canvas.style.width = "1960px";
-        // canvas.style.height = "1380px";
+        // 桌面设备样式：在一个可最大化为全屏的窗口中渲染游戏 canvas
+        // 如果需要手动设置 canvas 的宽高，请取消注释以下两行：
+        canvas.style.width = '1920px'
+        canvas.style.height = '1080px'
       }
 
+      // 显示加载进度条
       loadingBar.style.display = 'block'
-
-      var script = document.createElement('script')
+      const script = document.createElement('script')
       script.src = loaderUrl
+
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + '%'
@@ -118,22 +127,23 @@
             // fullscreenButton.onclick = () => {
             //   unityInstance.SetFullscreen(1);
             // };
-
             // unity instance 加载完成后，通知父级页面
-            window.parent.postMessage({ name: 'unityLoaded' }, '*')
+            window.microApp.forceDispatch({ modelVal: 'unityLoaded' })
 
-            //web给模型传参
-            window.addEventListener('message', (e) => {
-              console.log(e)
-            })
+            // 接收 unity 传递出的数据
+            window.SomeFunction = (val) => window.microApp.forceDispatch({ modelVal: val })
 
-            // 模型给web传参
-            function SomeFunction(str) {
-              console.log(str)
+            function dataListener(data) {
+              console.log('来自主应用的数据', data)
+              console.log('unityInstance :>> ', unityInstance)
+              // 清空主应用发送给子应用 my-app 的数据
+              window.microApp.clearData('unity-webgl-app')
             }
+            // 监听主应用传递的数据
+            window.microApp.addDataListener(dataListener)
           })
-          .catch((message) => {
-            alert(message)
+          .catch((error) => {
+            console.error('unity error =>', error)
           })
       }
 
