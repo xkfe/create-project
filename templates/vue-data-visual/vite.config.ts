@@ -1,8 +1,8 @@
 /*
  * @Author: xkfe
  * @Date: 2024-08-31 20:46:06
- * @LastEditors: xkfe
- * @LastEditTime: 2024-09-13 16:37:30
+ * @LastEditors: 小凯同学
+ * @LastEditTime: 2024-11-26 14:48:23
  * @Description: vite配置文件
  */
 import { URL, fileURLToPath } from 'node:url'
@@ -29,6 +29,13 @@ export default defineConfig(({ mode }) => {
       open: viteEnv.VITE_OPEN,
       host: true,
       proxy: createProxy(viteEnv.VITE_PROXY),
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "@/styles/variable.scss";`,
+        },
+      },
     },
   }
 })

@@ -1,3 +1,11 @@
+/*
+ * @Author: 小凯同学
+ * @Date: 2024-11-25 11:54:31
+ * @LastEditors: 小凯同学
+ * @LastEditTime: 2024-11-26 14:32:38
+ * @Description: uno 配置文件
+ */
+
 import { resolve } from 'node:path'
 import {
   defineConfig,
