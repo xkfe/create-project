@@ -2,6 +2,7 @@
   "name": "@xkfe/create-project",
   "type": "module",
   "version": "0.0.6",
+  "packageManager": "pnpm@8.15.0",
   "description": "✨创建开箱即用的前端快速开发模板的 cli 工具,包含后台、官网、小程序、H5等,提高效率，避免重复集成",
   "author": "xkfe<xkfe16@gmail.com>",
   "license": "MIT",
@@ -34,7 +35,8 @@
     "node": ">=18.0.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "dev:uniapp": "pnpm -F uniapp dev",
