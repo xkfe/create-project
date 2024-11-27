@@ -8,21 +8,42 @@ import gsap from 'gsap'
 const route = useRoute()
 const GLOBAL_TITLE = computed(() => import.meta.env.VITE_GLOBAL_TITLE)
 
-watch(route, async () => {
-  await nextTick()
-  gsap.to('.layout-header', {
+const layoutHeaderRef = ref<HTMLElement | null>(null)
+const spanCharRefs = ref<HTMLSpanElement[]>([])
+
+function playHeaderAnimation() {
+  gsap.to(layoutHeaderRef.value, {
     opacity: 1,
     y: 0,
     duration: 1.4,
     ease: 'power4.inOut',
   })
+}
+
+function playTextAnimation() {
+  gsap.fromTo(
+    spanCharRefs.value,
+    { opacity: 0, y: -10 },
+    {
+      opacity: 1,
+      y: 0,
+      stagger: 0.06,
+      delay: 1.1,
+    },
+  )
+}
+
+watch(route, async () => {
+  await nextTick()
+  playHeaderAnimation()
+  playTextAnimation()
 }, { immediate: true })
 </script>
 
 <template>
-  <div class="layout-header">
+  <div ref="layoutHeaderRef" class="layout-header">
     <h1 class="global-title">
-      <span v-for="(item, index) in GLOBAL_TITLE" :key="index">{{ item }}</span>
+      <span v-for="(item, index) in GLOBAL_TITLE" ref="spanCharRefs" :key="index" class="char">{{ item }}</span>
     </h1>
   </div>
 </template>
@@ -42,7 +63,7 @@ watch(route, async () => {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 40px;
+  font-size: 48px;
   font-weight: 500;
   font-family: YouSheBiaoTiHei;
   letter-spacing: 2px;
