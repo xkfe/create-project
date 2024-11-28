@@ -1,8 +1,8 @@
 /*
  * @Author: xkfe
  * @Date: 2024-09-10 22:35:12
- * @LastEditors: xkfe
- * @LastEditTime: 2024-11-24 15:47:02
+ * @LastEditors: 小凯同学
+ * @LastEditTime: 2024-11-28 22:59:00
  * @Description: vite 插件配置
  */
 import type { PluginOption } from 'vite'
@@ -11,6 +11,8 @@ import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Icons from 'unplugin-icons/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import VueRouter from 'unplugin-vue-router/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import viteCompression from 'vite-plugin-compression'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -23,6 +25,9 @@ import { visualizer } from 'rollup-plugin-visualizer'
 export function vitePlugins(viteEnv: ViteEnv): (PluginOption | PluginOption[])[] {
   const { VITE_DEVTOOLS, VITE_REPORT } = viteEnv
   return [
+    VueRouter({
+      dts: './typings/typed-router.d.ts',
+    }),
     vue({
       template: {
         compilerOptions: {
@@ -35,7 +40,7 @@ export function vitePlugins(viteEnv: ViteEnv): (PluginOption | PluginOption[])[]
     UnoCSS(),
     // https://github.com/unplugin/unplugin-auto-import 配置自动导入 vue相关函数
     AutoImport({
-      imports: ['vue', 'vue-router'],
+      imports: ['vue', VueRouterAutoImports],
       dirs: [
         'src/stores/modules/*',
         'src/components/*',
