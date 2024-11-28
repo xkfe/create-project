@@ -1,8 +1,4 @@
 <script setup lang="ts">
-// lottie 动画
-// import LottieView from 'ufuse/src/components/LottieView/index.vue'
-// import { loadLottieJSON } from 'ufuse/src/utils/loadLottieJSON'
-// const header = loadLottieJSON(import.meta.glob('@/assets/lottie/title/**/*', { eager: true }))
 import gsap from 'gsap'
 
 const route = useRoute()

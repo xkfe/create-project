@@ -18,3 +18,8 @@ declare interface ViteEnv {
 interface ImportMetaEnv extends ViteEnv {
   __: unknown
 }
+
+declare module '*.lottie' {
+  const src: string
+  export default src
+}

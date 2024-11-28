@@ -2,7 +2,7 @@
  * @Author: xkfe
  * @Date: 2024-08-31 20:46:06
  * @LastEditors: 小凯同学
- * @LastEditTime: 2024-11-26 14:48:23
+ * @LastEditTime: 2024-11-28 16:52:59
  * @Description: vite配置文件
  */
 import { URL, fileURLToPath } from 'node:url'
@@ -17,6 +17,7 @@ export default defineConfig(({ mode }) => {
   const viteEnv = wrapperEnv(env)
 
   return {
+    assetsInclude: ['**/*.lottie'],
     plugins: vitePlugins(viteEnv),
     resolve: {
       alias: {
