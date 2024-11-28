@@ -5,12 +5,32 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vue-data-visual</title>
+    <link rel="stylesheet" href="/src/components/loading/loading.css" />
+    <style>
+      html,
+      body,
+      #app {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        background-color: #02193a;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="loading">
+        <div class="lbox">
+          <img src="src/assets/images/loading.png" alt="" />
+          <p class="loading-text">正在加载系统资源，请耐心等待</p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
     <script type="module">
       window.viteEnv = import.meta.env
     </script>
-    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -23,7 +23,7 @@ function playHeaderAnimation() {
 function playTextAnimation() {
   gsap.fromTo(
     spanCharRefs.value,
-    { opacity: 0, y: -10 },
+    { opacity: 0, y: -40 },
     {
       opacity: 1,
       y: 0,
@@ -42,7 +42,7 @@ watch(route, async () => {
 
 <template>
   <div ref="layoutHeaderRef" class="layout-header">
-    <h1 class="global-title">
+    <h1 class="header-title" :data-text="GLOBAL_TITLE">
       <span v-for="(item, index) in GLOBAL_TITLE" ref="spanCharRefs" :key="index" class="char">{{ item }}</span>
     </h1>
   </div>
@@ -58,11 +58,12 @@ watch(route, async () => {
   background: url('@/assets/images/container-header-bg.png') no-repeat center 0;
 }
 
-.global-title {
+.header-title {
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  overflow: hidden;
   font-size: 48px;
   font-weight: 500;
   font-family: YouSheBiaoTiHei;
