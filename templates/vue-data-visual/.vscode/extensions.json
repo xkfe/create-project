@@ -1,5 +1,8 @@
 {
   "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "usernamehw.errorlens",
+    "EditorConfig.EditorConfig",
     "Vue.volar",
     "antfu.unocss"
   ]
