@@ -2,7 +2,7 @@
 import { ready as preloadReady } from './preload'
 import { useContain } from '@/hooks/useContain'
 import LayoutHeader from '@/layout/Header.vue'
-import LottieExample from '@/components/LottieExample/index.vue'
+import LayoutMenu from '@/layout/Menu.vue'
 
 // import WebGLModel from '@/components/WebGLModel/index.vue'
 
@@ -31,13 +31,15 @@ useContain({
   <div class="app-container">
     <div ref="appContentRef" class="app-content">
       <LayoutHeader />
+      <div class="menu-region">
+        <LayoutMenu />
+      </div>
       <!-- <WebGLModel /> -->
       <RouterView v-if="preReady" v-slot="{ Component }">
-        <Transition name="fade-scale">
-          <component :is="Component" />
-        </Transition>
+        <!-- <Transition name="fade-scale"> -->
+        <component :is="Component" />
+        <!-- </Transition> -->
       </RouterView>
-      <LottieExample />
     </div>
   </div>
 </template>
@@ -53,5 +55,12 @@ useContain({
   position: relative;
   overflow: hidden;
   background-image: url('@/assets/images/container-bg.jpg');
+}
+
+.menu-region {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>

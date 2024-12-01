@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 
-const route = useRoute()
 const GLOBAL_TITLE = computed(() => import.meta.env.VITE_GLOBAL_TITLE)
 
 const layoutHeaderRef = ref<HTMLElement | null>(null)
@@ -29,11 +28,16 @@ function playTextAnimation() {
   )
 }
 
-watch(route, async () => {
-  await nextTick()
+// watch(route, async () => {
+//   await nextTick()
+//   playHeaderAnimation()
+//   playTextAnimation()
+// }, { immediate: true })
+
+onMounted(() => {
   playHeaderAnimation()
   playTextAnimation()
-}, { immediate: true })
+})
 </script>
 
 <template>
