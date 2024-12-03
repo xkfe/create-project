@@ -26,6 +26,9 @@ export function vitePlugins(viteEnv: ViteEnv): (PluginOption | PluginOption[])[]
   const { VITE_DEVTOOLS, VITE_REPORT } = viteEnv
   return [
     VueRouter({
+      exclude: [
+        'src/pages/**/components/**', // 排除 src/pages/components 文件夹及其子文件夹'
+      ],
       dts: './typings/typed-router.d.ts',
     }),
     vue({

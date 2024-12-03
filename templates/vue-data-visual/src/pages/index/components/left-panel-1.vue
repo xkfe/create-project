@@ -1,14 +1,10 @@
 <script setup lang="ts">
-definePage({
-  meta: {
-    name: '哈哈哈',
-  },
-})
+import Card from '@/components/Card/index.vue'
 </script>
 
 <template>
   <div>
-    临时
+    <Card />
   </div>
 </template>
 

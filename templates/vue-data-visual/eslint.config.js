@@ -7,5 +7,6 @@ export default antfu({
     'no-console': 'off',
     'no-debugger': 'off',
     'no-restricted-syntax': 'off',
+    'antfu/if-newline': 'off',
   },
 })

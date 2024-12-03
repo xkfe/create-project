@@ -51,6 +51,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .layout-header {
   position: relative;
+  z-index: 1;
   width: 100%;
   height: $layoutHeaderHeight;
   opacity: 0;

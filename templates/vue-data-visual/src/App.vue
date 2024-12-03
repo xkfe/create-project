@@ -3,7 +3,6 @@ import { ready as preloadReady } from './preload'
 import { useContain } from '@/hooks/useContain'
 import LayoutHeader from '@/layout/Header.vue'
 import LayoutMenu from '@/layout/Menu.vue'
-
 // import WebGLModel from '@/components/WebGLModel/index.vue'
 
 // import { useRequest } from 'alova/client'
@@ -59,8 +58,9 @@ useContain({
 
 .menu-region {
   position: absolute;
-  bottom: 80px;
+  bottom: 10px;
   left: 50%;
+  z-index: 1;
   transform: translateX(-50%);
 }
 </style>

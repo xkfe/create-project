@@ -28,12 +28,13 @@ const finalRoutes = computed(() => {
     ...item,
     meta: {
       ...item.meta,
+      name: item.meta.name || item.name,
       icon: menuIcons[index],
     },
   }))
 })
 
-function changeMenu(item) {
+function changeMenu(item: typeof finalRoutes.value[0]) {
   router.push(item.path)
 }
 
@@ -45,11 +46,11 @@ function playMenuAnimation() {
       opacity: 1,
       y: 0,
       stagger: 0.1,
-      delay: 1.1,
     },
   )
 }
 onMounted(() => {
+  console.log('router.getRoutes() :>> ', router.getRoutes())
   playMenuAnimation()
 })
 </script>
