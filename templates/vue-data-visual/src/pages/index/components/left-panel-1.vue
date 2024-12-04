@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import Card from '@/components/Card/index.vue'
+// import Card from '@/components/Card/index.vue'
+import VEcharts from '@/components/VEcharts/index.vue'
 </script>
 
 <template>
   <div>
-    <Card />
+    <!-- <Card /> -->
+    <VEcharts :loading="true" />
   </div>
 </template>
 
