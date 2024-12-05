@@ -9,6 +9,14 @@ import {
   TooltipComponent,
 } from 'echarts/components'
 import VChart, { THEME_KEY } from 'vue-echarts'
+import type { EChartsOption } from 'echarts'
+import { toMerged } from 'es-toolkit'
+import { castArray } from 'es-toolkit/compat'
+import * as defaults from './defaults'
+
+const props = defineProps<{
+  option: EChartsOption
+}>()
 
 use([
   CanvasRenderer,
@@ -24,45 +32,33 @@ use([
 provide(THEME_KEY, 'light')
 
 const chartRef = ref<InstanceType<typeof VChart>>()
-const option = ref({
-  tooltip: {
-    trigger: 'axis',
-    axisPointer: {
-      type: 'shadow',
-    },
-  },
-  grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
-    containLabel: true,
-  },
-  xAxis: {
-    type: 'category',
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-  },
-  yAxis: {
-    type: 'value',
-  },
-  series: [
-    {
-      data: [120, 200, 150, 80, 70, 110, 130],
-      type: 'bar',
-    },
-  ],
+
+const chartInstance = computed(() => chartRef.value)
+const chartOptions = computed<EChartsOption>(() => {
+  return {
+    ...props.option,
+    // props.options.grid 仅允许一个值，即对象，不允许数组
+    grid: toMerged(defaults.grid, props.option.grid || {}),
+    legend: toMerged(defaults.legend, props.option.legend || {}),
+    tooltip: toMerged(defaults.tooltip, props.option.tooltip || {}),
+    xAxis: castArray(props.option.xAxis).map(xAxis => toMerged(defaults.xAxis, xAxis)),
+    yAxis: castArray(props.option.yAxis).map(yAxis => toMerged(defaults.yAxis, yAxis)),
+  }
 })
 
 defineExpose({
-  chartInstance: computed(() => chartRef.value),
+  chartInstance,
 })
 </script>
 
 <template>
-  <VChart ref="chartRef" class="chart" :option="option" v-bind="$attrs" />
+  <VChart ref="chartRef" class="chart" :option="chartOptions" v-bind="$attrs" />
 </template>
 
 <style scoped>
 .chart {
-  height: 400px;
+  width: 100%;
+  height: 100%;
+  flex: 1;
 }
 </style>

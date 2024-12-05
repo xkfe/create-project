@@ -24,7 +24,7 @@
     "@vueuse/core": "9.13.0",
     "alova": "^3.0.16",
     "echarts": "^5.5.1",
-    "es-toolkit": "^1.17.0",
+    "es-toolkit": "^1.27.0",
     "gsap": "^3.12.5",
     "lottie-web": "^5.12.2",
     "nprogress": "^0.2.0",
