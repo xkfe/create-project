@@ -1,0 +1,19 @@
+.el-dropdown__popper .el-dropdown-menu,
+.el-select-dropdown__list {
+  padding: 5px;
+}
+// .el-dropdown-menu__item:not(.is-disabled):focus,
+// .el-dropdown-menu__item:not(.is-disabled):hover,
+// .el-select-dropdown__item.is-selected {
+//   background-color: #f3f3f5;
+//   color: #303133;
+// }
+
+.el-switch {
+  height: 24px;
+}
+
+// 去掉 tooltip 的边框
+.el-tooltip__trigger:focus {
+  outline: none;
+}

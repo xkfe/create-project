@@ -1,0 +1,94 @@
+.first-loading-wrp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  min-height: 90vh;
+}
+/* .loader-spinner-box {
+  min-height: 66px;
+} */
+
+/* new loader */
+.loader-spinner {
+  width: 68px;
+  aspect-ratio: 1;
+  /* #25b09b */
+  --_c: no-repeat radial-gradient(farthest-side, #5a9cf8 92%, #0000);
+  background:
+    var(--_c) top,
+    var(--_c) left,
+    var(--_c) right,
+    var(--_c) bottom;
+  background-size: 18px 18px;
+  animation: l7 1s infinite;
+}
+@keyframes l7 {
+  to {
+    transform: rotate(0.5turn);
+  }
+}
+
+/* old loader */
+.old_loader-spinner {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  background-image: linear-gradient(#c3d5fc 16px, transparent 0), linear-gradient(#98b8fa 16px, transparent 0),
+    linear-gradient(#98b8fa 16px, transparent 0), linear-gradient(#c3d5fc 16px, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  background-position:
+    left top,
+    left bottom,
+    right top,
+    right bottom;
+  animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    width: 64px;
+    height: 64px;
+    transform: rotate(0deg);
+  }
+  50% {
+    width: 30px;
+    height: 30px;
+    transform: rotate(180deg);
+  }
+  100% {
+    width: 64px;
+    height: 64px;
+    transform: rotate(360deg);
+  }
+}
+
+.loader-text {
+  margin-top: 40px;
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30px;
+  background: radial-gradient(circle closest-side, #000 94%, #0000) right/calc(200% - 1em) 100%;
+  animation: l24 1s infinite alternate linear;
+}
+.loader-text::before {
+  content: '正在加载系统资源中...';
+  line-height: 1em;
+  color: #0000;
+  background: inherit;
+  background-image: radial-gradient(circle closest-side, #fff 94%, #000);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+@keyframes l24 {
+  100% {
+    background-position: left;
+  }
+}
+@keyframes l24 {
+  100% {
+    background-position: left;
+  }
+}
